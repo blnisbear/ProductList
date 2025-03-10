@@ -1,0 +1,24 @@
+{
+  "name": "exam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon backend/server.js",
+    "start": "cross-env NODE_ENV=production node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
