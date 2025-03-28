@@ -9,7 +9,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());   
 
@@ -23,7 +24,11 @@ if(process.env.NODE_ENV === "production") {
     });
 }
 
-app.listen(PORT, () => {
-    connectDB();
-    console.log("server is started at http://localhost:" + PORT);
-}); 
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}).catch((error) => {
+    console.error("MongoDB connection failed:", error);
+    process.exit(1); // ปิดแอปถ้าเชื่อมต่อไม่ได้
+});
