@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/product.route.js";
 import path from "path";
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
